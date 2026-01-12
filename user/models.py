@@ -8,3 +8,11 @@ class Peofile(models.Model):
     phone=models.CharField(max_length=20)
     info=models.TextField(verbose_name='个人简介')
     profile_pic=models.OneToOneField(User,on_delete=models.CASCADE)
+    class Meta:
+        default_permissions=[]
+        permissions=(
+            ('add_user','添加用户'),
+            ('update_user','修改用户'),
+            ('delete_user','删除用户'),
+            ('show_user','查看用户'),
+        )

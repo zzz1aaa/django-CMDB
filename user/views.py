@@ -1,5 +1,5 @@
 from django.contrib.auth.hashers import make_password
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Group,Permission
 from django.http import HttpResponse,JsonResponse
 from django.shortcuts import render
 from django.views.generic import View,TemplateView
@@ -119,6 +119,91 @@ class UserStatusView(View):
                 User.objects.filter(id=request.GET.get('id')).update(is_active=0)
             else:
                 User.objects.filter(id=request.GET.get('id')).update(is_active=1)
+        except Exception as e:
+            print(e)
+            res={'status': 1 , 'msg' : '修改失败'}
+        return JsonResponse(res)
+class GroupListView(ListView):
+    template_name = 'group_list.html'
+    model = Group
+    paginate_by = 8
+
+class GroupAddView(ListView):
+    template_name = 'group_add.html'
+    model = User
+    def post(self, request):
+        data=request.POST
+        res={'status':0,'msg':'添加成功'}
+        try:
+            group = Group()
+            group.name = data.get('name')
+            group.save()
+            for i in data.getlist('group_user'):
+                group.user_set.add(User.objects.get(id=i))
+        except Exception as e:
+            print(e)
+            res={'status': 1 , 'msg' : '添加失败'}
+        return JsonResponse(res)
+
+class GroupUpdateView(ListView):
+    template_name = 'group_update.html'
+    model = User
+    def get_context_data(self, **kwargs):
+        context = super(GroupUpdateView, self).get_context_data(**kwargs)
+        context['group_obj'] = Group.objects.get(id=self.request.GET.get('id'))
+        return context
+    def post(self, request):
+        data=request.POST
+        res={'status':0,'msg':'修改成功'}
+        try:
+            group = Group.objects.get(id=data.get('gid'))
+            group.name = data.get('name')
+            group.save()
+            group.user_set.clear()
+            for i in data.getlist('group_user'):
+                group.user_set.add(User.objects.get(id=i))
+        except Exception as e:
+            print(e)
+            res={'status': 1 , 'msg' : '修改失败'}
+        return JsonResponse(res)
+
+class PermListView(ListView):
+    template_name = 'perm_list.html'
+    model = Permission
+    paginate_by = 8
+    def get_queryset(self):
+        queryset = super(PermListView, self).get_queryset()
+        queryset = queryset.exclude(name__regex='[a-zA-Z]')
+        return queryset
+
+class PermUserSetView(ListView):
+    template_name = 'user_set_perm.html'
+    model = Permission
+    paginate_by = 8
+    def get_context_data(self, **kwargs):
+        context = super(PermUserSetView, self).get_context_data(**kwargs)
+        context['user_obj'] = User.objects.get(id=self.request.GET.get('id'))
+        return context
+    def get_queryset(self):
+        queryset = super(PermUserSetView, self).get_queryset()
+        queryset = queryset.exclude(name__regex='[a-zA-Z]')
+        return queryset
+    def post(self, request):
+        data=request.POST
+        print(data)
+        res={'status':0,'msg':'修改成功'}
+        try:
+            user = User.objects.get(id=data.get('uid'))
+            user.user_permissions.clear()
+            for i in data.getlist('perm_list[]'):
+                user.user_permissions.add(Permission.objects.get(id=i))
+            #下面这种方法现在不能使用，因为你试图直接赋值给用户的 user_permissions 这个多对多字段（比如 user.user_permissions =
+            # [perm1, perm2]），而 Django 明确禁止这种操作，要求使用 set() 方法来修改多对多关系。
+            # print(data.get('uid'))
+            # print(data.getlist('perm_list[]'))
+            # user = User.objects.get(id=data.get('uid'))
+            # user.user_permissions = data.getlist('perm_list[]')
+            # user.save()
         except Exception as e:
             print(e)
             res={'status': 1 , 'msg' : '修改失败'}

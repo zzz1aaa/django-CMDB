@@ -11,4 +11,9 @@ urlpatterns = [
     path('update/',UserUpdateView.as_view(),name='user_update'),
     path('delete/',UserDeleteView.as_view(),name='user_delete'),
     path('status/',UserStatusView.as_view(),name='user_status'),
+    path('grouplist/',GroupListView.as_view(),name='group_list'),
+    path('groupadd/',GroupAddView.as_view(),name='group_add'),
+    path('groupupdate/',GroupUpdateView.as_view(),name='group_update'),
+    path('permlist/',PermListView.as_view(),name='perm_list'),
+    path('permuserset/',PermUserSetView.as_view(),name='user_set_perm')
 ]
