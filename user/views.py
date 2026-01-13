@@ -4,6 +4,8 @@ from django.http import HttpResponse,JsonResponse
 from django.shortcuts import render
 from django.views.generic import View,TemplateView
 from django.views.generic import ListView
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required, permission_required
 
 from user.models import Peofile
 
@@ -53,6 +55,11 @@ class TestDataView(View):
 
 class UserAddView(TemplateView):
     template_name = 'user_add.html'
+    @method_decorator(login_required)
+    @method_decorator(permission_required('user.add_user'))
+    def get(self, request):
+        context=super(UserAddView, self).get_context_data()
+        return context
     def post(self, request):
         data=request.POST
         res={'status':0,'msg':'添加成功'}

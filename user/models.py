@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Group
 # Create your models here.
 
 class Peofile(models.Model):
@@ -15,4 +15,13 @@ class Peofile(models.Model):
             ('update_user','修改用户'),
             ('delete_user','删除用户'),
             ('show_user','查看用户'),
+        )
+class NewGroup(Group):
+    class Meta:
+        default_permissions=[]
+        permissions=(
+            ('add_group','添加用户组'),
+            ('update_group','修改用户组'),
+            ('delete_group','删除用户组'),
+            ('show_group','查看用户组'),
         )

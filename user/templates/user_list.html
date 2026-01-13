@@ -19,7 +19,9 @@
     </div>
 {% endblock %}
 {% block body %}
-    <a type="button" class="btn btn-info" href="{% url 'user_add' %}">添加用户</a>
+    {% if perms.user.user_add %}
+        <a type="button" class="btn btn-info" href="{% url 'user_add' %}">添加用户</a>
+    {% endif %}
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
