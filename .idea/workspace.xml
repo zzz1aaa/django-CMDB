@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac924a51-ad42-43da-8ef7-141c24726f92" name="更改" comment="用户组与所有权限模块">
-      <change afterPath="$PROJECT_DIR$/resources/migrations/0002_serveruser.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/migrations/0003_alter_serveruser_password.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/templates/idc_update.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/templates/serveruser_add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/templates/serveruser_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/templates/serveruser_update.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/user/migrations/0003_newgroup.py" afterDir="false" />
+    <list default="true" id="ac924a51-ad42-43da-8ef7-141c24726f92" name="更改" comment="资产机房与资产用户模块">
+      <change afterPath="$PROJECT_DIR$/resources/migrations/0004_server_networt_disk.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/migrations/0005_rename_networt_network.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/migrations/0006_rename_cup_info_server_cpu_info_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/templates/server_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMDB/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/CMDB/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/templates/idc_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/resources/templates/idc_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/templates/user_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/user/templates/user_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +127,7 @@
         <env name="DJANGO_SETTINGS_MODULE" value="CMDB.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.14 (CMDB)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -140,7 +135,7 @@
       <option name="RUN_TOOL" value="" />
       <option name="launchJavascriptDebuger" value="false" />
       <option name="port" value="8000" />
-      <option name="host" value="" />
+      <option name="host" value="192.168.200.1" />
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="" />
       <option name="runTestServer" value="false" />
@@ -149,6 +144,10 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Django 服务器.CMDB" />
+      <item itemvalue="Python.views" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.views" />
@@ -180,7 +179,7 @@
       <workItem from="1767834333601" duration="19594000" />
       <workItem from="1767920977634" duration="10576000" />
       <workItem from="1768179827156" duration="11569000" />
-      <workItem from="1768219251150" duration="9200000" />
+      <workItem from="1768219251150" duration="48717000" />
     </task>
     <task id="LOCAL-00001" summary="第一天">
       <option name="closed" value="true" />
@@ -222,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768179880489</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="资产机房与资产用户模块">
+      <option name="closed" value="true" />
+      <created>1768282550711</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1768282550711</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,7 +260,8 @@
     <MESSAGE value="第一天" />
     <MESSAGE value="用户列表与管理模块" />
     <MESSAGE value="用户组与所有权限模块" />
-    <option name="LAST_COMMIT_MESSAGE" value="用户组与所有权限模块" />
+    <MESSAGE value="资产机房与资产用户模块" />
+    <option name="LAST_COMMIT_MESSAGE" value="资产机房与资产用户模块" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

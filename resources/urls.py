@@ -11,4 +11,8 @@ urlpatterns = [
     path('serveruser/add/',ServerUserAddView.as_view(),name='serveruser_add'),
     path('serveruser/delete/',ServerUserDeleteView.as_view(),name='serveruser_delete'),
     path('serveruser/update/',ServerUserUpdateView.as_view(),name='serveruser_update'),
+    path('server/list',ServerListView.as_view(),name='server_list'),
+    path('server/delete',ServerDeleteView.as_view(),name='server_delete'),
+    path('data/serverapi/',ServerApiView.as_view(),name='server_api'),
+
 ]
